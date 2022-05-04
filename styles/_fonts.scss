@@ -1,0 +1,9 @@
+@font-face {
+  font-family: Cubano;
+  src: url("/fonts/cubano.ttf");
+}
+
+h1, h2, h3, h4,
+.h1, .h2, .h3, .h4 {
+  font-family: Cubano, sans-serif;
+}

@@ -1,0 +1,42 @@
+.form-group {
+  @apply inline-flex w-full rounded-md p-0.5 mb-3 text-white relative overflow-hidden;
+  background-color: #423D3D;
+
+  .form-control {
+    @apply bg-transparent border-0 p-2.5 outline-0 w-full z-10 rounded-md;
+    background-color: #423D3D;
+
+    &::placeholder {
+      color: #A1A1A1;
+    }
+  }
+
+  &::before {
+    @apply absolute w-full h-full top-0 z-0;
+    content: '';
+    background-image: linear-gradient(45deg, #FF50ED 2%, #FFAF37 100%);
+    transition: transform .5s;
+    left: 50%;
+    transform: translateX(-50%) scale(.9);
+    border-radius: 100%;
+  }
+
+  &:hover::before {
+    transform: translateX(-50%) scale(1.5);
+  }
+}
+
+.btn {
+  @apply py-2 px-5 rounded-md select-none;
+  font-family: Cubano, sans-serif;
+
+  &-primary {
+    @apply text-white;
+    background-image: linear-gradient(180deg, #FF50ED -97.37%, #FFAF37 148.25%);
+    transition: letter-spacing .2s;
+
+    &:hover {
+      @apply tracking-widest;
+    }
+  }
+}
