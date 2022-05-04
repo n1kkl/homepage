@@ -12,17 +12,15 @@
   }
 
   &::before {
-    @apply absolute w-full h-full top-0 z-0;
+    @apply absolute w-full h-full top-0 left-0 z-0;
     content: '';
     background-image: linear-gradient(45deg, #FF50ED 2%, #FFAF37 100%);
     transition: transform .5s;
-    left: 50%;
-    transform: translateX(-50%) scale(.9);
-    border-radius: 100%;
+    display: none;
   }
 
   &:hover::before {
-    transform: translateX(-50%) scale(1.5);
+    display: block;
   }
 }
 
