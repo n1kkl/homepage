@@ -70,27 +70,8 @@ const Home: NextPage = () => {
             </Head>
 
             <main className="h-full flex">
-                <div className="h-full w-1/2 hidden 2xl:flex relative">
+                <div className="h-full w-1/2 hidden 2xl:flex relative gradient">
                     <img src="/img/logo-380.png" width={200} height={200} className="absolute z-10 logo"/>
-                    <Wave
-                        className="rotate-90"
-                        fill="url(#gradient)"
-                        gradientTransform="rotate(90)"
-                        paused={false}
-                        options={{
-                            height: 20,
-                            amplitude: 20,
-                            speed: 0.15,
-                            points: 3
-                        }}
-                    >
-                        <defs>
-                            <linearGradient id="gradient">
-                                <stop offset="-100%" stopColor="#FF50ED"/>
-                                <stop offset="150%" stopColor="#FFAF37"/>
-                            </linearGradient>
-                        </defs>
-                    </Wave>
                 </div>
                 <div className="h-full flex grow justify-center items-center">
                     <div className="w-full max-w-xl">

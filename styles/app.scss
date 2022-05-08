@@ -32,3 +32,14 @@ body {
   animation: LogoEffect 1s ease-in-out;
 }
 
+@keyframes GradientFade {
+  0%{background-position: 0 0}
+  50%{background-position: 100% 100%}
+  100%{background-position: 0 0}
+}
+
+.gradient {
+  background: linear-gradient(#ff50ed, #ffaf37);
+  background-size: 200% 200%;
+  animation: GradientFade 15s ease infinite;
+}
