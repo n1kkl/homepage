@@ -5,6 +5,7 @@ import Wave from 'react-wavify'
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {toast} from 'react-toastify';
+import {useState} from 'react';
 
 interface FormData {
     name: string;
@@ -33,7 +34,10 @@ const Home: NextPage = () => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm<FormData>({
         resolver: yupResolver(schema)
     });
+    const [loading, setLoading] = useState<boolean>(false);
+
     const onSubmit = async (data: FormData) => {
+        setLoading(true);
         await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: {
@@ -50,6 +54,7 @@ const Home: NextPage = () => {
                 botcheck: data.botcheck
             }, null, 2),
         }).then(res => res.json()).then(async (res) => {
+            setLoading(false);
             if (res.success) {
                 toast.success('Nachricht erfolgreich versendet.');
                 reset();
@@ -57,6 +62,7 @@ const Home: NextPage = () => {
                 toast.error('Es ist ein Fehler aufgetreten.');
             }
         }).catch((error) => {
+            setLoading(false);
             toast.error('Es ist ein Fehler aufgetreten.');
         });
     };
@@ -81,21 +87,22 @@ const Home: NextPage = () => {
                         <form className="flex flex-col px-5" onSubmit={handleSubmit(onSubmit)}>
                             <input type="checkbox" className="hidden" {...register('botcheck')}/>
                             <div className="form-group">
-                                <input type="text" className="form-control" placeholder="Name" {...register('name')}/>
+                                <input disabled={loading} type="text" className="form-control"
+                                       placeholder="Name" {...register('name')}/>
                             </div>
                             <small className="text-red-400">{errors.name?.message}</small>
                             <div className="form-group">
-                                <input type="email" className="form-control" placeholder="Email"
+                                <input disabled={loading} type="email" className="form-control" placeholder="Email"
                                        formNoValidate {...register('email')}/>
                             </div>
                             <small className="text-red-400">{errors.email?.message}</small>
                             <div className="form-group">
-                                <textarea placeholder="Nachricht" rows={8}
+                                <textarea disabled={loading} placeholder="Nachricht" rows={8}
                                           className="form-control resize-none"  {...register('message')}/>
                             </div>
                             <small className="text-red-400">{errors.message?.message}</small>
                             <div className="flex justify-end mt-3">
-                                <button className="btn btn-primary" type="submit">Senden</button>
+                                <button disabled={loading} className="btn btn-primary" type="submit">Senden</button>
                             </div>
                         </form>
                     </div>
