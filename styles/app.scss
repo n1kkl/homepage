@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import "fonts";
+@import "keyframes";
 @import "form";
 
 * {
@@ -24,34 +25,11 @@ body {
   background-color: #423D3D !important;
 }
 
-@keyframes LogoEffect {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0)
-  }
-  to {
-    opacity: 100%;
-    transform: translate(-50%, -50%) scale(1)
-  }
-}
-
 .logo {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   animation: LogoEffect 1s ease-in-out;
-}
-
-@keyframes GradientFade {
-  0% {
-    background-position: 0 0
-  }
-  50% {
-    background-position: 100% 100%
-  }
-  100% {
-    background-position: 0 0
-  }
 }
 
 .gradient {
